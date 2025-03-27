@@ -146,15 +146,27 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
+    padding: 20px;
     background: linear-gradient(transparent, rgba(0,0,0,0.8));
     color: white;
-    padding: 20px;
     transform: translateY(100%);
     transition: transform 0.3s ease;
 }
 
 .project-card:hover .project-info {
     transform: translateY(0);
+}
+
+.project-info h4 {
+    margin: 0 0 5px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.project-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
 }
 
 /* Testimonials Section */
@@ -257,23 +269,126 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        margin-bottom: 15px;
     }
     
     .hero p {
         font-size: 1rem;
+        margin-bottom: 20px;
     }
-    
+
+    .hero .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .hero .btn + .btn {
+        margin-left: 0 !important;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .trust-indicators {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .badge {
+        width: 100%;
+        justify-content: center;
+    }
+
     .service-card {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+        padding: 20px;
     }
-    
+
+    .project-filters {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .project-filters .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .before-after-slider {
+        height: 250px;
+    }
+
     .project-card {
+        margin-bottom: 20px;
+    }
+
+    .project-info {
+        transform: translateY(0);
+        background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    }
+
+    .testimonial-card {
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+
+    .popup-offer {
+        width: 95%;
+        padding: 25px;
+    }
+
+    .popup-content h3 {
+        font-size: 20px;
+    }
+
+    .popup-content h4 {
+        font-size: 18px;
+    }
+
+    .contact-info {
+        margin-top: 30px;
+    }
+
+    .map-container {
+        height: 250px;
+        margin-top: 20px;
+    }
+
+    .footer {
+        text-align: center;
+    }
+
+    .footer .col-md-4 {
         margin-bottom: 30px;
     }
-    
-    .testimonial-card {
-        margin-bottom: 30px;
+
+    .newsletter-form .input-group {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .before-after-slider {
+        height: 200px;
     }
 }
 
@@ -467,18 +582,22 @@ body {
     display: block;
 }
 
-/* Before/After Slider */
+/* Enhanced Before/After Slider */
 .before-after-slider {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 300px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    cursor: grab;
 }
 
-.before-image,
-.after-image {
+.before-after-slider.resizing {
+    cursor: grabbing;
+}
+
+.before-after-slider img {
     position: absolute;
     top: 0;
     left: 0;
@@ -494,12 +613,12 @@ body {
 .slider-handle {
     position: absolute;
     top: 0;
+    bottom: 0;
     left: 50%;
     width: 4px;
-    height: 100%;
     background: white;
-    cursor: ew-resize;
     transform: translateX(-50%);
+    cursor: col-resize;
 }
 
 .slider-handle::before {
@@ -512,9 +631,6 @@ body {
     height: 40px;
     background: white;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
@@ -527,6 +643,7 @@ body {
     color: var(--secondary-color);
     font-size: 20px;
     font-weight: bold;
+    pointer-events: none;
 }
 
 /* Project Filters */
