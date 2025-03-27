@@ -67,62 +67,78 @@ body {
 }
 
 .hero-content {
-    position: relative;
-    z-index: 1;
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 4rem 1rem;
+    text-align: center;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.hero h1 span {
-    display: block;
-    font-size: 2rem;
-    font-weight: 600;
+.hero-content h1 {
+    font-size: 3rem;
     margin-bottom: 0.5rem;
-    color: #3498db;
+    color: white;
 }
 
-.hero p {
-    font-size: 1.25rem;
-    margin-bottom: 2.5rem;
-    color: #ffffff;
-    line-height: 1.8;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    opacity: 0.9;
+.hero-content .subtitle {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 1rem;
 }
 
-.hero .btn {
-    padding: 1rem 2rem;
+.hero-content h2 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 0 auto;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
     font-size: 1.1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
     transition: all 0.3s ease;
+    min-width: 180px;
 }
 
-.hero .btn-primary {
-    background: #3498db;
+.cta-button i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.cta-button.primary {
+    background: var(--primary-color);
+    color: white;
     border: none;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
 }
 
-.hero .btn-outline-light {
-    border-width: 2px;
+.cta-button.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
 }
 
-.hero .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 /* Trust Indicators */
@@ -293,26 +309,24 @@ body {
     }
 
     .hero-content {
-        padding: 20px;
-        margin: 40px auto;
-        text-align: center;
-        max-width: 100%;
+        padding: 3rem 1rem;
     }
 
-    .hero h1 {
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
+    .hero-content h1 {
+        font-size: 2.5rem;
     }
 
-    .hero h1 span {
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
+    .hero-content .subtitle {
+        font-size: 1.2rem;
     }
 
-    .hero p {
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-description {
         font-size: 1rem;
-        margin-bottom: 2rem;
-        line-height: 1.6;
+        margin-bottom: 1.5rem;
     }
 
     .cta-buttons {
@@ -323,9 +337,9 @@ body {
 
     .cta-button {
         width: 100%;
-        max-width: 280px;
-        text-align: center;
-        justify-content: center;
+        max-width: 220px;
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
     }
 
     .trust-indicators {
@@ -810,48 +824,6 @@ body {
 
 .project-gallery img:hover {
     transform: scale(1.05);
-}
-
-/* CTA Buttons */
-.cta-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    min-height: 48px;
-    border: none;
-}
-
-.cta-button.primary {
-    background: #3498db;
-    color: white;
-}
-
-.cta-button.secondary {
-    background: transparent;
-    color: white;
-    border: 2px solid white;
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    color: white;
-}
-
-.cta-button i {
-    margin-right: 8px;
-    font-size: 1.1rem;
 }
 
 /* Navbar Animation */
