@@ -129,36 +129,25 @@ body {
 .trust-indicators {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin: 2rem auto;
-    max-width: 280px;
+    gap: 1.2rem;
 }
 
 .trust-indicator {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    padding: 6px 0;
-    background: none;
-    border: none;
-    border-radius: 0;
-    backdrop-filter: none;
+    gap: 1rem;
+    padding: 8px 0;
 }
 
 .trust-indicator i {
-    font-size: 1rem;
-    color: #3498db;
-    width: auto;
-    height: auto;
-    background: none;
-    display: inline;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
 }
 
 .trust-indicator span {
-    color: white;
-    font-size: 1rem;
-    font-weight: 400;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 /* Emergency Services Banner */
@@ -352,15 +341,15 @@ body {
     }
 
     .trust-indicator {
-        padding: 4px 0;
+        padding: 6px 0;
     }
 
     .trust-indicator i {
-        font-size: 0.9rem;
+        font-size: 1.1rem;
     }
 
     .trust-indicator span {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .emergency-services-banner {
