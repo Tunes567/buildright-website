@@ -145,7 +145,7 @@ body {
 }
 
 .trust-indicator span {
-    color: var(--text-color);
+    color: #333;
     font-size: 1.1rem;
     font-weight: 500;
 }
@@ -317,22 +317,15 @@ body {
 
     .cta-buttons {
         flex-direction: column;
-        gap: 12px;
-        margin: 1.5rem auto;
-        max-width: 280px;
+        align-items: center;
+        gap: 1rem;
     }
 
     .cta-button {
         width: 100%;
-        padding: 12px;
-        font-size: 0.95rem;
-        border-radius: 25px;
-        height: 48px;
-    }
-
-    .cta-button i {
-        font-size: 1rem;
-        margin-right: 6px;
+        max-width: 280px;
+        text-align: center;
+        justify-content: center;
     }
 
     .trust-indicators {
@@ -342,14 +335,17 @@ body {
 
     .trust-indicator {
         padding: 6px 0;
+        justify-content: flex-start;
     }
-
+    
     .trust-indicator i {
         font-size: 1.1rem;
+        color: var(--secondary-color);
     }
-
+    
     .trust-indicator span {
         font-size: 1rem;
+        color: #333;
     }
 
     .emergency-services-banner {
@@ -820,7 +816,7 @@ body {
 .cta-buttons {
     display: flex;
     gap: 1rem;
-    margin: 2rem 0;
+    margin-top: 2rem;
 }
 
 .cta-button {
