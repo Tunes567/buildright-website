@@ -119,99 +119,117 @@ document.addEventListener('click', function(e) {
 
 // Popup Offer
 document.addEventListener('DOMContentLoaded', () => {
+    // Show popup after 5 seconds
     setTimeout(() => {
-        const popup = document.getElementById('popupOffer');
-        if (popup && !localStorage.getItem('popupShown')) {
+        const popup = document.querySelector('.popup-offer');
+        if (!localStorage.getItem('popupShown')) {
             popup.classList.add('show');
         }
     }, 5000);
 
-    const closePopup = document.querySelector('.close-popup');
-    if (closePopup) {
-        closePopup.addEventListener('click', () => {
-            document.getElementById('popupOffer').classList.remove('show');
-            localStorage.setItem('popupShown', 'true');
-        });
-    }
-
-    const offerForm = document.getElementById('offerForm');
-    if (offerForm) {
-        offerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = e.target.querySelector('input[type="email"]').value;
-            // Here you would typically send this to your server
-            alert('Thank you! Your discount code has been sent to your email.');
-            document.getElementById('popupOffer').classList.remove('show');
-            localStorage.setItem('popupShown', 'true');
-        });
-    }
-});
-
-// Before/After Slider
-document.querySelectorAll('.before-after-slider').forEach(slider => {
-    const handle = slider.querySelector('.slider-handle');
-    const beforeImage = slider.querySelector('.before-image');
-    let isDragging = false;
-
-    const updateSlider = (e) => {
-        if (!isDragging) return;
-        
-        const rect = slider.getBoundingClientRect();
-        const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
-        const percent = (x / rect.width) * 100;
-        
-        handle.style.left = `${percent}%`;
-        beforeImage.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
-    };
-
-    handle.addEventListener('mousedown', () => isDragging = true);
-    document.addEventListener('mousemove', updateSlider);
-    document.addEventListener('mouseup', () => isDragging = false);
-    
-    // Touch events for mobile
-    handle.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        e.preventDefault();
+    // Close popup
+    document.querySelector('.close-popup').addEventListener('click', () => {
+        document.querySelector('.popup-offer').classList.remove('show');
+        localStorage.setItem('popupShown', 'true');
     });
-    
-    document.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        const touch = e.touches[0];
-        const rect = slider.getBoundingClientRect();
-        const x = Math.max(0, Math.min(touch.clientX - rect.left, rect.width));
-        const percent = (x / rect.width) * 100;
-        
-        handle.style.left = `${percent}%`;
-        beforeImage.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
-    });
-    
-    document.addEventListener('touchend', () => isDragging = false);
-});
 
-// Project Filters
-document.addEventListener('DOMContentLoaded', () => {
+    // Before/After Slider
+    const sliders = document.querySelectorAll('.before-after-slider');
+    sliders.forEach(slider => {
+        const handle = slider.querySelector('.slider-handle');
+        const beforeImage = slider.querySelector('.before-image');
+        
+        let isResizing = false;
+
+        const resize = (e) => {
+            if (!isResizing) return;
+            
+            const rect = slider.getBoundingClientRect();
+            const x = Math.min(Math.max(e.pageX - rect.left, 0), rect.width);
+            const percent = (x / rect.width) * 100;
+            
+            handle.style.left = `${percent}%`;
+            beforeImage.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
+        };
+
+        handle.addEventListener('mousedown', () => isResizing = true);
+        window.addEventListener('mousemove', resize);
+        window.addEventListener('mouseup', () => isResizing = false);
+        
+        // Touch events for mobile
+        handle.addEventListener('touchstart', () => isResizing = true);
+        window.addEventListener('touchmove', (e) => {
+            if (!isResizing) return;
+            resize(e.touches[0]);
+        });
+        window.addEventListener('touchend', () => isResizing = false);
+    });
+
+    // Project Filters
     const filterButtons = document.querySelectorAll('.project-filters button');
-    const projects = document.querySelectorAll('.project-card').parentElement;
+    const projects = document.querySelectorAll('[data-category]');
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const filter = button.getAttribute('data-filter');
-            
             // Update active button
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-            
+
             // Filter projects
+            const filter = button.getAttribute('data-filter');
             projects.forEach(project => {
-                const category = project.getAttribute('data-category');
-                if (filter === 'all' || filter === category) {
-                    project.style.display = '';
-                    project.classList.add('fade-in');
+                if (filter === 'all' || project.getAttribute('data-category') === filter) {
+                    project.style.display = 'block';
+                    setTimeout(() => project.style.opacity = '1', 0);
                 } else {
-                    project.style.display = 'none';
-                    project.classList.remove('fade-in');
+                    project.style.opacity = '0';
+                    setTimeout(() => project.style.display = 'none', 300);
                 }
             });
+        });
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Navbar Background on Scroll
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.style.backgroundColor = '#1a1a1a';
+        } else {
+            navbar.style.backgroundColor = 'transparent';
+        }
+    });
+
+    // Form Submission with Animation
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = 'Sending...';
+            button.disabled = true;
+
+            // Simulate form submission
+            setTimeout(() => {
+                button.textContent = 'Success!';
+                button.style.backgroundColor = '#28a745';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.backgroundColor = '';
+                    button.disabled = false;
+                    form.reset();
+                }, 2000);
+            }, 1500);
         });
     });
 });
