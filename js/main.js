@@ -119,19 +119,33 @@ document.addEventListener('click', function(e) {
 
 // Popup Offer
 document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.querySelector('.popup-offer');
+    const overlay = document.querySelector('.overlay');
+
     // Show popup after 5 seconds
     setTimeout(() => {
-        const popup = document.querySelector('.popup-offer');
         if (!localStorage.getItem('popupShown')) {
-            popup.classList.add('show');
+            showPopup();
         }
     }, 5000);
 
-    // Close popup
-    document.querySelector('.close-popup').addEventListener('click', () => {
-        document.querySelector('.popup-offer').classList.remove('show');
+    // Show/Hide popup functions
+    function showPopup() {
+        popup.classList.add('show');
+        overlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function hidePopup() {
+        popup.classList.remove('show');
+        overlay.classList.remove('show');
+        document.body.style.overflow = '';
         localStorage.setItem('popupShown', 'true');
-    });
+    }
+
+    // Close popup
+    document.querySelector('.close-popup').addEventListener('click', hidePopup);
+    overlay.addEventListener('click', hidePopup);
 
     // Before/After Slider
     const sliders = document.querySelectorAll('.before-after-slider');
@@ -145,24 +159,55 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isResizing) return;
             
             const rect = slider.getBoundingClientRect();
-            const x = Math.min(Math.max(e.pageX - rect.left, 0), rect.width);
+            let x;
+            
+            if (e.type.includes('touch')) {
+                x = e.touches[0].pageX - rect.left;
+            } else {
+                x = e.pageX - rect.left;
+            }
+            
+            x = Math.min(Math.max(x, 0), rect.width);
             const percent = (x / rect.width) * 100;
             
             handle.style.left = `${percent}%`;
             beforeImage.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
         };
 
-        handle.addEventListener('mousedown', () => isResizing = true);
-        window.addEventListener('mousemove', resize);
-        window.addEventListener('mouseup', () => isResizing = false);
-        
-        // Touch events for mobile
-        handle.addEventListener('touchstart', () => isResizing = true);
-        window.addEventListener('touchmove', (e) => {
-            if (!isResizing) return;
-            resize(e.touches[0]);
+        // Mouse events
+        handle.addEventListener('mousedown', () => {
+            isResizing = true;
+            slider.classList.add('resizing');
         });
-        window.addEventListener('touchend', () => isResizing = false);
+        
+        window.addEventListener('mousemove', resize);
+        
+        window.addEventListener('mouseup', () => {
+            isResizing = false;
+            slider.classList.remove('resizing');
+        });
+        
+        // Touch events
+        handle.addEventListener('touchstart', (e) => {
+            isResizing = true;
+            slider.classList.add('resizing');
+            e.preventDefault(); // Prevent scrolling while dragging
+        });
+        
+        window.addEventListener('touchmove', (e) => {
+            resize(e);
+        });
+        
+        window.addEventListener('touchend', () => {
+            isResizing = false;
+            slider.classList.remove('resizing');
+        });
+
+        // Set initial position
+        setTimeout(() => {
+            handle.style.left = '50%';
+            beforeImage.style.clipPath = 'polygon(0 0, 50% 0, 50% 100%, 0 100%)';
+        }, 100);
     });
 
     // Project Filters
@@ -189,33 +234,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Navbar Background on Scroll
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.style.backgroundColor = '#1a1a1a';
-        } else {
-            navbar.style.backgroundColor = 'transparent';
-        }
-    });
-
-    // Form Submission with Animation
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
+    // Form Submission
+    document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const button = form.querySelector('button[type="submit"]');
             const originalText = button.textContent;
+            
             button.textContent = 'Sending...';
             button.disabled = true;
 
@@ -223,6 +248,11 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 button.textContent = 'Success!';
                 button.style.backgroundColor = '#28a745';
+                
+                if (form.closest('.popup-offer')) {
+                    setTimeout(hidePopup, 1500);
+                }
+                
                 setTimeout(() => {
                     button.textContent = originalText;
                     button.style.backgroundColor = '';
