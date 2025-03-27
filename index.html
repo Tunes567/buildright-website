@@ -2,30 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BuildRight Contractors - Building Excellence, One Project at a Time</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <title>BuildRight Contractors - Professional Construction & Renovation Services</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">BuildRight</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -33,41 +35,43 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero d-flex align-items-center text-white">
+    <section class="hero" id="home">
         <div class="container">
-            <div class="row">
-                <div class="col-12 col-lg-8 col-xl-7">
-                    <h1 class="mb-3">Building Excellence,<br class="d-none d-md-block"> One Project at a Time</h1>
-                    <p class="lead mb-4">Your trusted partner in construction and renovation, delivering quality craftsmanship and exceptional results.</p>
-                    <div class="d-flex flex-column flex-md-row gap-3">
-                        <a href="#contact" class="btn btn-primary btn-lg">Get a Free Quote</a>
-                        <a href="#contact" class="btn btn-outline-light btn-lg">Schedule Consultation</a>
+            <div class="hero-content">
+                <h1>
+                    <span>Professional Construction Services</span>
+                    Building Excellence, One Project at a Time
+                </h1>
+                <p>Transform your vision into reality with California's premier construction experts. We specialize in residential, commercial, and industrial projects, delivering superior craftsmanship and exceptional results.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-hard-hat me-2"></i>Start Your Project
+                    </a>
+                    <a href="#contact" class="btn btn-outline-light">
+                        <i class="fas fa-calculator me-2"></i>Get Free Estimate
+                    </a>
+                </div>
+
+                <div class="trust-indicators">
+                    <div class="trust-indicator">
+                        <i class="fas fa-certificate"></i>
+                        <span>Licensed & Insured</span>
                     </div>
-                    <div class="trust-indicators mt-4">
-                        <div class="trust-indicator">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Licensed & Insured</span>
-                        </div>
-                        <div class="trust-indicator">
-                            <i class="fas fa-star"></i>
-                            <span>5-Star Rated</span>
-                        </div>
-                        <div class="trust-indicator">
-                            <i class="fas fa-calendar-check"></i>
-                            <span>20+ Years Experience</span>
-                        </div>
+                    <div class="trust-indicator">
+                        <i class="fas fa-award"></i>
+                        <span>5-Star Rated Service</span>
+                    </div>
+                    <div class="trust-indicator">
+                        <i class="fas fa-building"></i>
+                        <span>20+ Years Experience</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <a href="#services">
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
     </section>
 
-    <!-- Emergency Services Section -->
+    <!-- Emergency Services Banner -->
     <div class="emergency-services-banner">
         <div class="container">
             <div class="row align-items-center justify-content-between">
@@ -78,16 +82,16 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-5">
-                    <div class="emergency-contact text-center">
+                    <div class="emergency-contact">
                         <a href="tel:1-800-555-0123" class="emergency-phone">
                             <i class="fas fa-phone-alt"></i>
                             1-800-555-0123
                         </a>
-                        <p class="mb-0">Available 24 hours, 7 days a week</p>
+                        <p class="mb-0 text-center">Available 24/7 for Emergency Services</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-danger btn-lg w-100" data-bs-toggle="modal" data-bs-target="#emergencyModal">
+                    <button class="btn btn-light btn-lg w-100" data-bs-toggle="modal" data-bs-target="#emergencyModal">
                         <i class="fas fa-ambulance me-2"></i>Request Emergency Service
                     </button>
                 </div>
@@ -230,50 +234,32 @@
     </div>
 
     <!-- Services Section -->
-    <section id="services" class="services py-5">
+    <section id="services" class="services">
         <div class="container">
-            <h2 class="text-center mb-5">Our Services</h2>
+            <div class="text-center mb-5">
+                <h2>Our Services</h2>
+                <p class="lead text-muted">Comprehensive construction and renovation solutions for every project</p>
+            </div>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="service-card">
-                        <i class="fas fa-building"></i>
-                        <h3>Residential & Commercial Construction</h3>
-                        <p>Full-service construction for homes and businesses</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <i class="fas fa-hammer"></i>
-                        <h3>Remodeling & Renovation</h3>
-                        <p>Transform your space with our expert remodeling services</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
+                    <div class="service-card text-center">
                         <i class="fas fa-home"></i>
-                        <h3>Roofing & Flooring</h3>
-                        <p>Quality roofing and flooring solutions</p>
+                        <h3>Residential Construction</h3>
+                        <p>Custom home building and complete home renovations with attention to detail.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="service-card">
-                        <i class="fas fa-wrench"></i>
-                        <h3>Plumbing & Electrical</h3>
-                        <p>Professional plumbing and electrical services</p>
+                    <div class="service-card text-center">
+                        <i class="fas fa-building"></i>
+                        <h3>Commercial Projects</h3>
+                        <p>Office renovations, retail spaces, and commercial building construction.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="service-card">
-                        <i class="fas fa-paint-brush"></i>
-                        <h3>Custom Projects</h3>
-                        <p>Tailored solutions for unique construction needs</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <i class="fas fa-tree"></i>
-                        <h3>Landscaping & Outdoor Projects</h3>
-                        <p>Professional landscaping and outdoor living spaces</p>
+                    <div class="service-card text-center">
+                        <i class="fas fa-hammer"></i>
+                        <h3>Remodeling</h3>
+                        <p>Kitchen, bathroom, and whole-house remodeling services.</p>
                     </div>
                 </div>
             </div>
@@ -310,18 +296,17 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-5">
+    <section id="projects" class="projects py-5">
         <div class="container">
-            <h2 class="text-center mb-5">Our Projects</h2>
-            
-            <!-- Project Filters -->
+            <div class="text-center mb-5">
+                <h2>Featured Projects</h2>
+                <p class="lead text-muted">Explore our portfolio of successful transformations</p>
+            </div>
             <div class="project-filters text-center mb-4">
                 <button class="btn btn-outline-primary active" data-filter="all">All</button>
                 <button class="btn btn-outline-primary" data-filter="residential">Residential</button>
                 <button class="btn btn-outline-primary" data-filter="commercial">Commercial</button>
-                <button class="btn btn-outline-primary" data-filter="renovation">Renovation</button>
             </div>
-
             <div class="row g-4">
                 <!-- Project 1 - Kitchen Renovation -->
                 <div class="col-md-4" data-category="residential">
@@ -511,38 +496,38 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer bg-dark text-light py-4">
+    <footer class="footer bg-dark text-light py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Business Hours</h5>
-                    <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                    <p>Saturday: 9:00 AM - 2:00 PM</p>
-                    <p>Sunday: Closed</p>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-4">BuildRight Contractors</h5>
+                    <p>Your trusted partner in construction and renovation since 2000. Licensed, bonded, and insured.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                <div class="col-lg-4">
+                    <h5 class="mb-4">Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 123 Construction Ave, CA 90210</p>
+                    <p><i class="fas fa-phone me-2"></i> (800) 555-0123</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@buildright.com</p>
                 </div>
-                <div class="col-md-4">
-                    <h5>Newsletter</h5>
+                <div class="col-lg-4">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Subscribe for updates and special offers</p>
                     <form class="newsletter-form">
                         <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Enter your email">
-                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-primary">Subscribe</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <hr>
+            <hr class="my-4">
             <div class="text-center">
-                <p>&copy; 2024 BuildRight Contractors. All rights reserved.</p>
+                <p class="mb-0">&copy; 2024 BuildRight Contractors. All rights reserved.</p>
             </div>
         </div>
     </footer>

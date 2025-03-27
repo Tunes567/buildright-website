@@ -8,6 +8,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth',
                 block: 'start'
             });
+            // Close mobile menu if open
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+            }
         }
     });
 });
@@ -16,11 +21,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.classList.add('bg-dark');
-        navbar.classList.remove('bg-transparent');
+        navbar.classList.add('navbar-scrolled');
     } else {
-        navbar.classList.remove('bg-dark');
-        navbar.classList.add('bg-transparent');
+        navbar.classList.remove('navbar-scrolled');
     }
 });
 
@@ -46,13 +49,12 @@ const newsletterForm = document.querySelector('.newsletter-form');
 if (newsletterForm) {
     newsletterForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        const email = this.querySelector('input[type="email"]').value;
-        
-        // Here you would typically send the email to your server
-        // For now, we'll just show a success message
-        alert('Thank you for subscribing to our newsletter!');
-        this.reset();
+        const emailInput = this.querySelector('input[type="email"]');
+        if (emailInput.value) {
+            // Here you would typically send this to your backend
+            alert('Thank you for subscribing! We\'ll keep you updated with our latest news.');
+            emailInput.value = '';
+        }
     });
 }
 
@@ -216,12 +218,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Update active button
+            // Remove active class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
             button.classList.add('active');
-
-            // Filter projects
+            
             const filter = button.getAttribute('data-filter');
+            
             projects.forEach(project => {
                 if (filter === 'all' || project.getAttribute('data-category') === filter) {
                     project.style.display = 'block';
@@ -285,12 +288,16 @@ document.querySelectorAll('.project-gallery img').forEach(img => {
 });
 
 // Emergency Service Form Handler
-document.getElementById('emergencyForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Here you would typically send the form data to your backend
-    alert('Emergency service request received. We will contact you immediately.');
-    document.getElementById('emergencyModal').querySelector('.btn-close').click();
-});
+const emergencyForm = document.getElementById('emergencyForm');
+if (emergencyForm) {
+    emergencyForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you would typically send this to your backend
+        const modal = bootstrap.Modal.getInstance(document.getElementById('emergencyModal'));
+        modal.hide();
+        alert('Your emergency service request has been received. We\'ll contact you shortly.');
+    });
+}
 
 // Virtual Consultation Form Handler
 document.getElementById('consultationForm')?.addEventListener('submit', function(e) {
@@ -305,4 +312,70 @@ document.querySelector('input[type="date"]')?.addEventListener('focus', function
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     this.min = tomorrow.toISOString().split('T')[0];
-}); 
+});
+
+// Animate trust indicators on scroll
+const trustIndicators = document.querySelectorAll('.trust-indicator');
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+trustIndicators.forEach(indicator => {
+    observer.observe(indicator);
+});
+
+// Add parallax effect to hero section
+window.addEventListener('scroll', function() {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        const scrolled = window.pageYOffset;
+        hero.style.backgroundPositionY = (scrolled * 0.5) + 'px';
+    }
+});
+
+// Initialize tooltips
+const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+});
+
+// Service card hover effect
+const serviceCards = document.querySelectorAll('.service-card');
+serviceCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.classList.add('hover');
+    });
+    card.addEventListener('mouseleave', function() {
+        this.classList.remove('hover');
+    });
+});
+
+// Lazy loading for images
+const images = document.querySelectorAll('img[data-src]');
+const imageOptions = {
+    threshold: 0,
+    rootMargin: '0px 0px 50px 0px'
+};
+
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.getAttribute('data-src');
+            img.removeAttribute('data-src');
+            imageObserver.unobserve(img);
+        }
+    });
+}, imageOptions);
+
+images.forEach(img => imageObserver.observe(img)); 
