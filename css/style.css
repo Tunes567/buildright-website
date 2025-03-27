@@ -66,28 +66,12 @@ body {
     padding: 100px 0;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(44, 62, 80, 0.85), rgba(52, 152, 219, 0.65));
-    mix-blend-mode: multiply;
-}
-
 .hero-content {
     position: relative;
     z-index: 1;
-    background: rgba(0,0,0,0.4);
-    padding: 3rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    backdrop-filter: blur(10px);
     max-width: 800px;
     margin: 0 auto;
+    padding: 2rem;
 }
 
 .hero h1 {
@@ -96,35 +80,24 @@ body {
     line-height: 1.2;
     margin-bottom: 1.5rem;
     color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: -1px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .hero h1 span {
-    color: #3498db;
     display: block;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    text-transform: none;
-    opacity: 0.9;
+    color: #3498db;
 }
 
 .hero p {
     font-size: 1.25rem;
     margin-bottom: 2.5rem;
-    opacity: 0.95;
-    max-width: 600px;
     color: #ffffff;
     line-height: 1.8;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-.cta-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
+    opacity: 0.9;
 }
 
 .hero .btn {
@@ -135,8 +108,6 @@ body {
     letter-spacing: 1px;
     border-radius: 8px;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
 }
 
 .hero .btn-primary {
@@ -147,27 +118,6 @@ body {
 
 .hero .btn-outline-light {
     border-width: 2px;
-    position: relative;
-    z-index: 1;
-}
-
-.hero .btn-outline-light::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255,255,255,0.1);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-    z-index: -1;
-}
-
-.hero .btn-outline-light:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
 }
 
 .hero .btn:hover {
@@ -178,25 +128,20 @@ body {
 /* Trust Indicators */
 .trust-indicators {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 2rem;
+    margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .trust-indicator {
-    flex: 1 1 auto;
-    min-width: 180px;
     display: flex;
     align-items: center;
     gap: 1rem;
     background: rgba(255, 255, 255, 0.1);
-    padding: 0.875rem 1.25rem;
+    padding: 1rem 1.5rem;
     border-radius: 8px;
-    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    border: 1px solid rgba(255,255,255,0.15);
 }
 
 .trust-indicator:hover {
@@ -207,21 +152,12 @@ body {
 .trust-indicator i {
     font-size: 1.5rem;
     color: #3498db;
-    background: rgba(255,255,255,0.9);
-    width: 45px;
-    height: 45px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .trust-indicator span {
     color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 /* Emergency Services Banner */
@@ -355,41 +291,44 @@ body {
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .hero {
-        padding: 80px 20px;
-        min-height: 100vh;
-        background-position: center;
+        background-attachment: scroll;
+        align-items: flex-start;
+        padding-top: 80px;
     }
 
     .hero-content {
-        padding-top: 60px;
-        max-width: 100%;
+        margin: 2rem 1rem;
+        padding: 2rem;
     }
 
-    .hero-description {
-        font-size: 1rem;
-        line-height: 1.6;
-        margin: 20px 0;
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero h1 span {
+        font-size: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
     }
 
     .trust-indicators {
-        display: flex;
         flex-direction: column;
-        gap: 15px;
-        margin-top: 30px;
-        background: rgba(0, 0, 0, 0.6);
-        padding: 20px;
-        border-radius: 12px;
+        gap: 1rem;
     }
 
     .trust-indicator {
-        background: rgba(0, 0, 0, 0.8);
-        padding: 12px 20px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
         width: 100%;
-        margin: 0;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
     }
 
     .site-footer {
@@ -398,36 +337,6 @@ body {
 
     .github-link {
         display: none;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero h1 span {
-        font-size: 1.4rem;
-    }
-
-    .hero p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .trust-indicators {
-        flex-direction: column;
-        gap: 1rem;
-        margin-top: 2rem;
-        padding-top: 2rem;
-    }
-
-    .trust-indicator {
-        width: 100%;
-        padding: 0.875rem 1.25rem;
     }
 
     /* Navigation Improvements */
