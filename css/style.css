@@ -18,17 +18,21 @@ body {
 .navbar {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
+    padding: 1.5rem 0;
 }
 
 .navbar-brand {
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--secondary-color) !important;
 }
 
 .nav-link {
     font-weight: 500;
     transition: color 0.3s ease;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem !important;
+    margin: 0 0.5rem;
 }
 
 .nav-link:hover {
@@ -38,12 +42,12 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/hero-bg.jpg');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
-    text-align: center;
     color: white;
     padding-top: 80px;
 }
@@ -55,26 +59,32 @@ body {
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     font-weight: 700;
-    margin-bottom: 20px;
-    animation: fadeInUp 1s ease;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    animation: fadeInUp 1s ease 0.2s;
-    opacity: 0;
-    animation-fill-mode: forwards;
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
 }
 
 .hero .btn {
-    padding: 12px 30px;
-    font-size: 1.1rem;
-    animation: fadeInUp 1s ease 0.4s;
-    opacity: 0;
-    animation-fill-mode: forwards;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 /* Services Section */
@@ -498,29 +508,34 @@ body {
 /* Trust Indicators */
 .trust-indicators {
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 3rem;
+    margin-top: 3rem;
 }
 
-.badge {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
+.trust-indicator {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    backdrop-filter: blur(5px);
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 
-.badge:hover {
-    transform: scale(1.05);
+.trust-indicator:hover {
     background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
-.badge i {
-    color: var(--secondary-color);
+.trust-indicator i {
+    font-size: 1.5rem;
+    color: #3498db;
+}
+
+.trust-indicator span {
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 /* Popup Styles */
@@ -631,7 +646,7 @@ body {
 .before-after-slider {
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 400px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -801,13 +816,15 @@ body {
 .navbar.scrolled {
     background-color: #1a1a1a !important;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1rem 0;
 }
 
 /* Emergency Services Banner */
 .emergency-services-banner {
-    background-color: #f8f9fa;
-    padding: 20px 0;
-    border-bottom: 3px solid #dc3545;
+    background-color: #fff;
+    padding: 2rem 0;
+    border-bottom: 4px solid #dc3545;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .emergency-icon {
@@ -815,15 +832,13 @@ body {
 }
 
 .emergency-icon i {
-    font-size: 2.5rem;
-    color: #dc3545;
-    margin-bottom: 10px;
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
 .emergency-icon h3 {
-    font-size: 1.2rem;
-    margin: 0;
-    color: #333;
+    font-size: 1.4rem;
+    font-weight: 600;
 }
 
 .emergency-contact {
@@ -831,41 +846,39 @@ body {
 }
 
 .emergency-phone {
-    display: block;
-    font-size: 1.5rem;
-    color: #dc3545;
-    text-decoration: none;
-    margin-bottom: 5px;
-}
-
-.emergency-phone:hover {
-    color: #c82333;
-}
-
-.emergency-phone i {
-    margin-right: 10px;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1rem 0;
 }
 
 /* Virtual Consultation Section */
 .virtual-consultation {
     background-color: #f8f9fa;
+    padding: 4rem 0;
     border-bottom: 1px solid #dee2e6;
 }
 
+.virtual-consultation h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
 .consultation-features {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
+    margin: 2rem 0;
 }
 
 .consultation-features li {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .consultation-features i {
-    margin-right: 10px;
-    color: #0d6efd;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: #3498db;
 }
 
 /* Modal Styles */
@@ -899,4 +912,33 @@ body {
     .virtual-consultation .btn {
         margin-top: 20px;
     }
+}
+
+/* Container Width */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+/* Section Headings */
+section h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+section h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: #3498db;
+    border-radius: 2px;
 } 
