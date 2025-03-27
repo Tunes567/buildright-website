@@ -282,4 +282,27 @@ document.querySelectorAll('.project-gallery img').forEach(img => {
         new bootstrap.Modal(modal).show();
         modal.addEventListener('hidden.bs.modal', () => modal.remove());
     });
+});
+
+// Emergency Service Form Handler
+document.getElementById('emergencyForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Here you would typically send the form data to your backend
+    alert('Emergency service request received. We will contact you immediately.');
+    document.getElementById('emergencyModal').querySelector('.btn-close').click();
+});
+
+// Virtual Consultation Form Handler
+document.getElementById('consultationForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    // Here you would typically send the form data to your backend
+    alert('Consultation request received. You will receive a confirmation email with the Zoom link.');
+    document.getElementById('consultationModal').querySelector('.btn-close').click();
+});
+
+// Set minimum date for consultation booking
+document.querySelector('input[type="date"]')?.addEventListener('focus', function(e) {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    this.min = tomorrow.toISOString().split('T')[0];
 }); 

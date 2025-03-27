@@ -62,6 +62,147 @@
         </div>
     </section>
 
+    <!-- Emergency Services Section -->
+    <div class="emergency-services-banner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <div class="emergency-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>24/7 Emergency Services</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="emergency-contact">
+                        <a href="tel:1-800-555-0123" class="emergency-phone">
+                            <i class="fas fa-phone-alt"></i>
+                            1-800-555-0123
+                        </a>
+                        <p class="mb-0">Available 24 hours, 7 days a week</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-danger btn-lg w-100" data-bs-toggle="modal" data-bs-target="#emergencyModal">
+                        <i class="fas fa-ambulance me-2"></i>Request Emergency Service
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Service Modal -->
+    <div class="modal fade" id="emergencyModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Emergency Service Request</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="emergencyForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" placeholder="Phone Number" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Location" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="3" placeholder="Describe your emergency" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-danger w-100">Submit Emergency Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Virtual Consultation Section -->
+    <section class="virtual-consultation py-4 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3>Schedule a Virtual Consultation</h3>
+                    <p>Meet with our experts from the comfort of your home</p>
+                    <ul class="consultation-features">
+                        <li><i class="fas fa-video"></i> Video consultation via Zoom</li>
+                        <li><i class="fas fa-clock"></i> Flexible scheduling</li>
+                        <li><i class="fas fa-mobile-alt"></i> Mobile-friendly</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary btn-lg w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">
+                        <i class="fas fa-calendar-alt me-2"></i>Schedule Your Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Consultation Modal -->
+    <div class="modal fade" id="consultationModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Schedule Virtual Consultation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="consultationForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Email Address" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control" placeholder="Phone Number" required>
+                                </div>
+                                <div class="mb-3">
+                                    <select class="form-select" required>
+                                        <option value="">Select Project Type</option>
+                                        <option value="kitchen">Kitchen Remodel</option>
+                                        <option value="bathroom">Bathroom Renovation</option>
+                                        <option value="addition">Home Addition</option>
+                                        <option value="commercial">Commercial Project</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Preferred Date</label>
+                                    <input type="date" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Preferred Time</label>
+                                    <select class="form-select" required>
+                                        <option value="">Select Time</option>
+                                        <option>9:00 AM</option>
+                                        <option>10:00 AM</option>
+                                        <option>11:00 AM</option>
+                                        <option>1:00 PM</option>
+                                        <option>2:00 PM</option>
+                                        <option>3:00 PM</option>
+                                        <option>4:00 PM</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="4" placeholder="Project Details" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Schedule Consultation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Overlay -->
     <div class="overlay"></div>
 
@@ -177,43 +318,88 @@
                 <div class="col-md-4" data-category="residential">
                     <div class="project-card">
                         <div class="before-after-slider">
-                            <img src="https://images.unsplash.com/photo-1574739782594-db4ead022697" alt="Kitchen Before" class="before-image">
-                            <img src="https://images.unsplash.com/photo-1556912998-c57cc6b63cd7" alt="Kitchen After" class="after-image">
+                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f" alt="Kitchen Before" class="before-image">
+                            <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba" alt="Kitchen After" class="after-image">
                             <div class="slider-handle"></div>
                         </div>
                         <div class="project-info">
-                            <h4>Luxury Kitchen Remodel</h4>
-                            <p>Complete kitchen transformation with modern appliances</p>
+                            <h4>Modern Kitchen Transformation</h4>
+                            <p>Complete renovation with custom cabinets and island</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 - Commercial Office -->
+                <!-- Project 2 - Bathroom Remodel -->
+                <div class="col-md-4" data-category="residential">
+                    <div class="project-card">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14" alt="Bathroom Before" class="before-image">
+                            <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101" alt="Bathroom After" class="after-image">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Luxury Bathroom Remodel</h4>
+                            <p>Spa-like transformation with modern fixtures</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Commercial Office -->
                 <div class="col-md-4" data-category="commercial">
                     <div class="project-card">
                         <div class="before-after-slider">
-                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd" alt="Commercial Before" class="before-image">
-                            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2" alt="Commercial After" class="after-image">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c" alt="Office Before" class="before-image">
+                            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2" alt="Office After" class="after-image">
                             <div class="slider-handle"></div>
                         </div>
                         <div class="project-info">
-                            <h4>Commercial Building Renovation</h4>
-                            <p>Modern office space transformation</p>
+                            <h4>Modern Office Renovation</h4>
+                            <p>Open-concept workspace transformation</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3 - Home Exterior -->
+                <!-- Project 4 - Home Exterior -->
                 <div class="col-md-4" data-category="renovation">
                     <div class="project-card">
                         <div class="before-after-slider">
-                            <img src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f" alt="Exterior Before" class="before-image">
-                            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994" alt="Exterior After" class="after-image">
+                            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233" alt="Exterior Before" class="before-image">
+                            <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6" alt="Exterior After" class="after-image">
                             <div class="slider-handle"></div>
                         </div>
                         <div class="project-info">
                             <h4>Complete Home Renovation</h4>
-                            <p>Exterior and interior transformation</p>
+                            <p>Exterior transformation with modern design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 - Restaurant Renovation -->
+                <div class="col-md-4" data-category="commercial">
+                    <div class="project-card">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Restaurant Before" class="before-image">
+                            <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8" alt="Restaurant After" class="after-image">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Restaurant Remodel</h4>
+                            <p>Modern dining space with custom features</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 - Basement Finishing -->
+                <div class="col-md-4" data-category="residential">
+                    <div class="project-card">
+                        <div class="before-after-slider">
+                            <img src="https://images.unsplash.com/photo-1516156008625-3a9d6067fab5" alt="Basement Before" class="before-image">
+                            <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" alt="Basement After" class="after-image">
+                            <div class="slider-handle"></div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Basement Entertainment Space</h4>
+                            <p>Unfinished to luxury entertainment area</p>
                         </div>
                     </div>
                 </div>
